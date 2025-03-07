@@ -41,24 +41,27 @@
             <br><button class="mt-4 btn btn-dark px-4 py-3 rounded-pill" type="submit">Search</button>
         </form>
     </div>
-    <% if(locals.message==undefined){%>
-        <h3></h3>
-        <%} else {%>
-            <div class=" text-bg-dark text-center">
-                <br>
-                <h4>
-                    <%= message %> <br>
-                        <br> Enjoy!
-                </h4> <br>
+    <% if (locals.message) { %>
+        <div class="text-bg-dark text-center">
+            <br>
+            <h4>
+                <%= message %> <br>
+                    <br> Enjoy!
+            </h4> <br>
+            <% if (recipeUrl) { %>
                 <p class="lead">You can find the recipe through the original website here: <br>
                     <a href="<%= recipeUrl %>">
                         <%= recipeUrl %>
                     </a>
                 </p>
-                <p class="lead">or just use the recipe image here 👇</p>
-                <img src="<%= recipeImg %>" alt="recipe image" class="img-fluid mb-4">
-            </div>
+                <% } %>
+                    <% if (recipeImg) { %>
+                        <p class="lead">or just use the recipe image here 👇</p>
+                        <img src="<%= recipeImg %>" alt="recipe image" class="img-fluid mb-4">
+                        <% } %>
+        </div>
         <% } %>
+
 
     <footer class="card-footer p-3"><a class="github-link" href="https://github.com/PurpleAbi">®Abigail Santana Medina 2025</a></footer>
 

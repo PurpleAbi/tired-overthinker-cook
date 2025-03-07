@@ -24,7 +24,23 @@ app.post("/getRandomRecipe", async (req, res) => {
         const recipeImg = recipeResponse.data;
         res.render("index.ejs", { message: `Here's your ${userSearch} recipe.`, recipeUrl: randomRecipe.recipes[0].sourceUrl,  recipeImg: recipeImg.url});
     } catch (error) {
-        res.render("index.ejs", { message: JSON.stringify(error.response.data) });
+        console.error('Error fetching recipe:', error.message);
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.error('Error data:', error.response.data);
+            console.error('Error status:', error.response.status);
+            console.error('Error headers:', error.response.headers);
+            res.render("index.ejs", { message: `Error: ${error.response.data.message || 'An error occurred while fetching the recipe.'}` });
+        } else if (error.request) {
+            // The request was made but no response was received
+            console.error('Error request:', error.request);
+            res.render("index.ejs", { message: 'Error: No response received from the API.' });
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            console.error('Error message:', error.message);
+            res.render("index.ejs", { message: `Error: ${error.message}` });
+        }
     }
 });
 
