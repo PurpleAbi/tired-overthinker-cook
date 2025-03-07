@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "axios": "^1.8.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  },
+  "name": "5.7-apis-capstoneproject",
+  "version": "1.0.0",
+  "description": "My first node.js project with server side and public APIs ",
+  "main": "index.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abigail Santana",
+  "license": "ISC"
+}
